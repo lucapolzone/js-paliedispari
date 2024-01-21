@@ -1,8 +1,10 @@
 const userInput = document.querySelector(".user-input");
 const playButton = document.querySelector(".button");
 const resetButton = document.querySelector(".reset");
-const feedbackContainer = document.getElementById("feedback-container");
+// const feedbackContainer = document.getElementById("feedback-container");
+const mainContainer = document.getElementById("main-container");
 const menuSelectionInput = document.querySelector(".selection");
+let feedbackContainer;
 
 userInput.value = "";
 
@@ -10,27 +12,26 @@ userInput.value = "";
 
 resetButton.addEventListener("click", function() {
   userInput.value = "";
-  feedbackContainer.innerHTML = "";
-  console.log
-  // location.reload();
+  // feedbackContainer.remove();
+  location.reload();
 })
 
 
 playButton.addEventListener("click", function() {
-
+  
   const userNumber = parseInt(userInput.value);
   const menuSelection = menuSelectionInput.value;
 
   if (isNaN(userNumber)) {
     alert("Inserisci un numero da 1 a 5");
     userInput.value = "";
-    feedbackContainer.innerHTML = "";
+    feedbackContainer.remove();
   }
   
   else if (userNumber > 5) {
     alert("Puoi solo inserire un numero da 1 a 5");
     userInput.value = "";
-    feedbackContainer.innerHTML = "";
+    feedbackContainer.remove();
     // Ricarica la pagina
     // location.reload();
   }
@@ -38,7 +39,7 @@ playButton.addEventListener("click", function() {
   else if ((menuSelection == "even") && (userNumber % 2 == 1)) {
     alert("Hai selezionato 'Pari' ma hai inserito un numero dispari");
     userInput.value = "";
-    feedbackContainer.innerHTML = "";
+    feedbackContainer.remove();
     // Ricarica la pagina
     //location.reload();
   }
@@ -46,7 +47,7 @@ playButton.addEventListener("click", function() {
   else if ((menuSelection == "odd") && (userNumber % 2 == 0)) {
     alert("Hai selezionato 'Dispari' ma hai inserito un numero pari");
     userInput.value = "";
-    feedbackContainer.innerHTML = "";
+    feedbackContainer.remove();
     // Ricarica la pagina
     // location.reload();
   }
@@ -80,20 +81,26 @@ playButton.addEventListener("click", function() {
     }
 
     // console.log(oddEven());
+    
+
+    feedbackContainer = document.createElement("div");
+    feedbackContainer.classList.add("container")
+
 
     feedbackContainer.innerHTML = `<h2>Il computer ha fatto ${pcNumber}</h2>`
     feedbackContainer.innerHTML += `<h2>La somma è ${somma}, ${oddEven()}</h2>`
 
     if ((menuSelection == "even") && (somma % 2 == 0) || (menuSelection == "odd") && (somma % 2 == 1)) {
       console.log("Hai vinto");
-      feedbackContainer.innerHTML += `<h2>Hai vinto!</h2>`
+      feedbackContainer.innerHTML += `<h2 class="win">Hai vinto!</h2>`
     } 
 
     if ((menuSelection == "even") && (somma % 2 == 1) || (menuSelection == "odd") && (somma % 2 == 0)) {
       console.log("Hai perso");
-      feedbackContainer.innerHTML += `<h2>Hai perso!</h2>`
+      feedbackContainer.innerHTML += `<h2 class="lose">Hai perso!</h2>`
     }
     
+    mainContainer.append(feedbackContainer);
   }
 
 })
