@@ -1,5 +1,5 @@
 const userInput = document.querySelector(".user-input");
-const playButton = document.querySelector(".button");
+const playButton = document.querySelector(".play-button");
 const resetButton = document.querySelector(".reset");
 // const feedbackContainer = document.getElementById("feedback-container");
 const mainContainer = document.getElementById("main-container");
