@@ -66,23 +66,23 @@ playButton.addEventListener("click", function() {
     const somma = userNumber + pcNumber;
     // console.log(somma);
 
-    feedbackContainer.innerHTML = `<h2>Il computer ha fatto ${pcNumber}</h2>`
-    feedbackContainer.innerHTML += `<h2>La somma è ${somma}</h2>`
-
-
+    
     //Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
 
     function oddEven() {
       let feedback;
 
       if (somma % 2 == 0) {
-        return feedback = "La somma è pari";
+        return feedback = "è pari";
       } else {
-        return feedback = "La somma è dispari";
+        return feedback = "è dispari";
       }
     }
 
-    console.log(oddEven());
+    // console.log(oddEven());
+
+    feedbackContainer.innerHTML = `<h2>Il computer ha fatto ${pcNumber}</h2>`
+    feedbackContainer.innerHTML += `<h2>La somma è ${somma}, ${oddEven()}</h2>`
 
     if ((menuSelection == "even") && (somma % 2 == 0) || (menuSelection == "odd") && (somma % 2 == 1)) {
       console.log("Hai vinto");
